@@ -146,22 +146,22 @@ data = {
     'Vehicle'
   ],
   distinctions: [
-    'Personality Trait: Natural Leader, Quick to Anger, Uncompromising, etc.',
-    'Outlook or Reputation: Hardheaded Futurist, Misunderstood Menace, Never Grows Up, etc.',
-    'History/Backstory: Criminal Past, Mysterious Destiny, Texas Farmboy, etc.',
-    'Catchphrase or Title: Defender of Justice, "I Don&#39;t Believe In No Win Scenarios", "Smash!", etc.',
-    'Notable Feature: Alluring, Cutting Edge Tech, World-Class Intellect, etc.',
-    'Profession: Ace Reporter, Billionaire Playboy, Russian Superspy, etc.'
+    'Personality Trait',
+    'Outlook or Reputation',
+    'History/Backstory',
+    'Catchphrase or Title',
+    'Notable Feature',
+    'Profession'
   ],
   milestonesIndex: [
     0, 0, 1, 1, 2, 2, 3, 3, 4, 4
   ],
   milestones: [
-    'Affiliation Milestone: Choose your highest or lowest Affiliation die and create a Milestone based on that. For example, someone with a Team d10 might take a Milestone about keeping his team together. Someone with a Team d6 might take a Milestone about resisting joining a team.',
-    'Origin Milestone: Create a Milestone based on your Origin. For example, a Mutant Origin could involve being a self-hating mutant. A Trained Human might make a Milestone based on keeping up with mutants and gods in a team.',
-    'Power Milestone: Create a Milestone that relates to one of your Power Sets. A hero with a Mystical Power Set might make a Milestone around mastering the arcane arts. A hero with Uncontrollable Powers might make a Milestone about keeping those powers under control.',
-    'Distinction Milestone: Create a Milestone that relates to one of your Distinctions. These include personal Milestones like succumbing to an addiction, or having the past come back to haunt your hero.',
-    'Specialty Milestone: Create a Milestone that relates to one of your Specialties, particularly if you have a Master-level Specialty. A dedicated doctor with Medical Master who is attempting to cure a dangerous disease might make this kind of Milestone.'
+    'Affiliation',
+    'Origin',
+    'Power',
+    'Distinction',
+    'Specialty'
   ]
 };
 
@@ -214,7 +214,7 @@ function buildDatafile() {
   for (d = 0; d < 3; d++) {
     r = Math.ceil(Math.random() * data.distinctions.length);
     dis = data.distinctions[r - 1];
-    ds += dis + (d < 2 ? ' <br />' : '');
+    ds += dis + (d < 2 ? ', ' : '');
   }
   ds += '</p>';
   
@@ -296,7 +296,7 @@ function buildDatafile() {
     // write
     ds += '<p><b>' + theme.name + '</b><br />';
     for (traitName in powerlist) {
-      ds += traitName + ' d' + powerlist[traitName] + ', ';
+      ds += traitName + ' d' + powerlist[traitName] + '<br />';
     }
     ds = ds.substring(0, ds.length - 2) + '<br />';
     for (sfx = 0; sfx < origin.SFX; sfx++) {
@@ -314,20 +314,23 @@ function buildDatafile() {
   spec.expert += origin.expert;
   spec.master += origin.master;
   chooseSpec(spec, origin);
-  ds += '<p><b>Specialties:</b> ';
+  ds += '<p><b>Specialties:</b>';
   for (s in spec.specialties) {
-    ds += spec.specialties[s] + ', ';
+    ds += spec.specialties[s] + '<br />';
   }
   ds = ds.substring(0, ds.length - 2);
   ds += '</p>';
   
   // roll milestones
   ds += '<p><b>Milestones:</b></p>';
+  ds += '<p>'
   for (m = 0; m < 2; m++) {
     r = Math.ceil(Math.random() * data.milestonesIndex.length);
     ms = data.milestones[data.milestonesIndex[r - 1]];
-    ds += '<p>' + ms + '</p>';
+    ds += ms + ', ';
   }
+  ds = ds.substring(0, ds.length - 2);
+  ds += '</p>'
   
   return ds;
 }
