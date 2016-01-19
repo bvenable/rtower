@@ -1,9 +1,10 @@
 #!/usr/bin/env node
+var path = require("path");
 var util = require("util");
 var Browser = require("zombie");
 var assert = require("assert");
 browser = new Browser();
-var indexfile = util.format('file://%s/src/rtower/index.html', process.env['HOME'])
+var indexfile = util.format('file://%s/index.html', path.resolve(path.dirname(process.env['_'])));
 browser.visit(indexfile).
  then(function() {
   datafile = browser.query("#datafile");
