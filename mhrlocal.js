@@ -2,7 +2,7 @@
 var Browser = require("zombie");
 var assert = require("assert");
 browser = new Browser();
-browser.visit('file://home/spif/rtower/index.html').
+browser.visit('file://home/spif/src/rtower/index.html').
  then(function() {
   datafile = browser.query("#datafile");
   dfchildren = datafile.childNodes
