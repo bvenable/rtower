@@ -1,8 +1,10 @@
 #!/usr/bin/env node
+var util = require("util");
 var Browser = require("zombie");
 var assert = require("assert");
 browser = new Browser();
-browser.visit('file://home/spif/src/rtower/index.html').
+var indexfile = util.format('file://%s/src/rtower/index.html', process.env['HOME'])
+browser.visit(indexfile).
  then(function() {
   datafile = browser.query("#datafile");
   dfchildren = datafile.childNodes
