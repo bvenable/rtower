@@ -4,7 +4,7 @@ var util = require("util");
 var Browser = require("zombie");
 var assert = require("assert");
 browser = new Browser();
-var indexfile = util.format('file://%s/index.html', path.resolve(path.dirname(process.env['_'])));
+var indexfile = util.format('file://%s/index.html', path.resolve(path.dirname('.')));
 browser.visit(indexfile).
  then(function() {
   datafile = browser.query("#datafile");
