@@ -322,8 +322,7 @@ function buildDatafile() {
   ds += '</p>';
   
   // roll milestones
-  ds += '<p><b>Milestones:</b></p>';
-  ds += '<p>'
+  ds += '<p><b>Milestones:</b><br />';
   for (m = 0; m < 2; m++) {
     r = Math.ceil(Math.random() * data.milestonesIndex.length);
     ms = data.milestones[data.milestonesIndex[r - 1]];
