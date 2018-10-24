@@ -314,7 +314,7 @@ function buildDatafile() {
   spec.expert += origin.expert;
   spec.master += origin.master;
   chooseSpec(spec, origin);
-  ds += '<p><b>Specialties:</b>';
+  ds += '<p><b>Specialties:</b><br />';
   for (s in spec.specialties) {
     ds += spec.specialties[s] + '<br />';
   }
